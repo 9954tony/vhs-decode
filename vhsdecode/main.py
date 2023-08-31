@@ -422,7 +422,7 @@ def main(args=None, use_gui=False):
 
         if vhsd.fields_written < 100:
             jsondumper.put(vhsd.build_json(vhsd.curfield))
-        if ((vhsd.fields_written % 500) == 0):
+        if ((vhsd.fields_written % 500) == 0) and vhsd.fields_written > 100:
             newpid = os.fork()
             if newpid == 0:
                 lddu.write_json(vhsd, (vhsd.build_json(vhsd.curfield)), outname)
